@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Day1.CSharp.Day1.DoStuff();
-        // Day1.CSharp.Day1 day1 = new();
+        Day1.CSharp.Day1 day1 = new(false);
+
     }
 }
