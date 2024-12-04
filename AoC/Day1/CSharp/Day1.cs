@@ -19,10 +19,7 @@ public class Day1
         else
         {
             //- Part Two. What is their similarity score?
-            //How often numbers on left appear in right
-            //multiply number by amount of times  
-            //Plus results.
-            HowOften();
+            PartTwo();
         }
     }
 
@@ -115,10 +112,20 @@ public class Day1
 
     #region Part Two
 
-
-    private void HowOften()
+    private void PartTwo()
     {
-        
+        List<int> numbers = [];
+        foreach (var leftLine in _left)
+        {
+            numbers.AddRange(from rightLine in _right where leftLine == rightLine select leftLine);
+        }
+
+        var query = numbers.GroupBy(x => x)
+            .Select(y => new { Number = y.Key, Counter = y.Count()})
+            .ToList();
+
+        var result = query.Sum(number => (number.Number * number.Counter));
+        Console.WriteLine(result);
     }
 
     #endregion
