@@ -13,7 +13,7 @@ def sort():
     return first_line, second_line
 
 
-def fin():
+def part_one():
     first, second = sort()
     new_list = []
     counter = 0
@@ -21,9 +21,26 @@ def fin():
     # Checking which side is bigger, and then subtracting the smaller number from the bigger.
     for i in first:
         new_list.append(abs((int(first[counter]) - (int(second[counter])))))
-        counter = counter + 1
+        counter += 1
 
     print(sum(new_list))
 
 
-fin()
+def part_two():
+    first, second = sort()
+    resulting_list = []
+    for i in first:
+        amount = 0
+        for u in second:
+            if i == u:
+                amount += 1
+        if amount > 0:
+            resulting_list.append([i, amount])
+
+    result = 0
+    for number in resulting_list:
+        result += (int(number[0]) * number[1])
+    print(result)
+
+# partOne()
+part_two()
