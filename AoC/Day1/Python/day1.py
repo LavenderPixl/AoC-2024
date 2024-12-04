@@ -2,9 +2,9 @@ def sort():
     first_line = []
     second_line = []
 
-    content = open("AoC/Day1/input.txt", "r").read().splitlines()
+    data = open("AoC/Day1/input.txt", "r").read().splitlines()
     # Sorting lines.
-    for line in content:
+    for line in data:
         first_line.append(line.split()[0])
         second_line.append(line.split()[1])
 
@@ -42,5 +42,5 @@ def part_two():
         result += (int(number[0]) * number[1])
     print(result)
 
-# partOne()
-part_two()
+part_one()
+# part_two()
