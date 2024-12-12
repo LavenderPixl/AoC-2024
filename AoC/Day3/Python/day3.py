@@ -15,3 +15,5 @@ def part_one():
         result += r
 
     print(result)
+
+part_one()
