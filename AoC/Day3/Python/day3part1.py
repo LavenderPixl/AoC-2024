@@ -4,7 +4,8 @@ reports = open("AoC/Day3/input.txt", "r").read().splitlines()
 pattern = re.compile(r'mul\(([0-9]*),([0-9]*)\)')
 
 
-def part_one():
+def run():
+    """What do you get if you add up all of the results of the multiplications?"""
     matches = []
     result = 0
     for report in reports:
@@ -14,6 +15,4 @@ def part_one():
     for r in matches:
         result += r
 
-    print(result)
-
-part_one()
+    print(f"Py | Day 3, Part 1 | Result: {result}")

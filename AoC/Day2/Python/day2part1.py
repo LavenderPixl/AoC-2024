@@ -1,12 +1,9 @@
-# Need to check if:
-#    The levels are either all increasing or all decreasing.
-#    Any two adjacent levels differ by at least one and at most three.
-
 reports = open("AoC/Day2/input.txt", "r").read().splitlines()
 
-def part_one():
+
+def run():
+    """How many reports are safe?"""
     cleaned = []
-    safe = True
     safe_amount = 0
     increasing = 0
     for levels in reports:
@@ -16,13 +13,12 @@ def part_one():
         last_index = len(level) - 1
         for i in range(len(level)):
             if i == last_index:
-                continue    
+                continue
 
             # Checking difference of index and one after.
             difference = abs(int(level[i]) - int(level[i + 1]))
 
             if difference > 3 or difference < 1:
-                safe = False
                 break
 
             # Check if Increasing / Decreasing
@@ -31,18 +27,12 @@ def part_one():
             else:
                 increasing += 1
 
-
-        # print(abs(len(level) - 1), abs(increasing))
         if abs(increasing) == abs(len(level) - 1):
             safe = True
-            # print(f"Safe: {safe}")
         else:
             safe = False
 
         increasing = 0
         if safe:
             safe_amount += 1
-            safe = False
-    print(f"Safe amount: {safe_amount}")
-
-part_one()
+    print(f"Py | Day 2, Part 1 | Safe amount: {safe_amount}")

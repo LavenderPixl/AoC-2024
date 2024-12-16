@@ -1,6 +1,8 @@
 from AoC.Day1.Python import day1part1
 
+
 def run():
+    """What is their similarity score?"""
     first, second = day1part1.sort()
     resulting_list = []
     for i in first:

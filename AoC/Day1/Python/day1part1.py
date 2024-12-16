@@ -15,6 +15,7 @@ def sort():
 
 
 def run():
+    """What is the total distance between the lists?"""
     first, second = sort()
     new_list = []
     counter = 0
