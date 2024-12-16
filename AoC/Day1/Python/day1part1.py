@@ -3,6 +3,7 @@ def sort():
     second_line = []
 
     data = open("AoC/Day1/input.txt", "r").read().splitlines()
+
     # Sorting lines.
     for line in data:
         first_line.append(line.split()[0])
@@ -13,7 +14,7 @@ def sort():
     return first_line, second_line
 
 
-def part_one():
+def run():
     first, second = sort()
     new_list = []
     counter = 0
@@ -23,24 +24,4 @@ def part_one():
         new_list.append(abs((int(first[counter]) - (int(second[counter])))))
         counter += 1
 
-    print(sum(new_list))
-
-
-def part_two():
-    first, second = sort()
-    resulting_list = []
-    for i in first:
-        amount = 0
-        for u in second:
-            if i == u:
-                amount += 1
-        if amount > 0:
-            resulting_list.append([i, amount])
-
-    result = 0
-    for number in resulting_list:
-        result += (int(number[0]) * number[1])
-    print(result)
-
-part_one()
-# part_two()
+    print(f"Py | Day 1, Part 1 | Result: {sum(new_list)}")
