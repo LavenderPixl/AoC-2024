@@ -70,7 +70,7 @@ public class Day2Part1 : IDay
             cleaned.Add(li);
         }
 
-        Console.WriteLine($"Day 2, Part 1 | Cleaned: {cleaned.Count}");
+        Console.WriteLine($"C# | Day 2, Part 1 | Cleaned: {cleaned.Count}");
         return cleaned;
     }
 }

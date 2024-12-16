@@ -34,7 +34,7 @@ public class Day3Part1 : IDay
 
             res += _inputList.Sum();
 
-            Console.WriteLine(res);
+            Console.WriteLine($"C# | Day 3, Part 1 | Sum: {res}");
         }
         catch (Exception e)
         {

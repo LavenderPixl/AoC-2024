@@ -42,6 +42,6 @@ public class Day1Part2 : IDay
             .ToList();
 
         var result = query.Sum(number => (number.Number * number.Counter));
-        Console.WriteLine($"Day 1, Part 2 | Result: {result}");
+        Console.WriteLine($"C# | Day 1, Part 2 | Result: {result}");
     }
 }

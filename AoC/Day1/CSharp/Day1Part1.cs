@@ -35,7 +35,7 @@ public class Day1Part1 : IDay
     {
         int[] leftArray = QuickSort(_left.ToArray(), 0, _left.ToArray().Length - 1);
         int[] rightArray = QuickSort(_right.ToArray(), 0, _right.ToArray().Length - 1);
-        Console.WriteLine($"Day 1, Part 1 | Difference: {GetDifference(leftArray, rightArray)}");
+        Console.WriteLine($"C# | Day 1, Part 1 | Difference: {GetDifference(leftArray, rightArray)}");
     }
 
 
