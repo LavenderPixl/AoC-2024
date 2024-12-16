@@ -2,43 +2,21 @@ using System.Collections.ObjectModel;
 
 namespace AoC.Day1.CSharp;
 
-public class Day1
+public class Day1Part1 : IDay
 {
     private readonly List<int> _left = [];
     private readonly List<int> _right = [];
 
-    public Day1(bool partOne)
+    public void Run()
     {
-        StuffLists();
-
-        if (partOne)
-        {
-            //- Part One. - What is the Total Distance between your lists?
-            PartOne();
-        }
-        else
-        {
-            //- Part Two. What is their similarity score?
-            PartTwo();
-        }
+        HandleInput("../../../Day1/input.txt");
+        RunSorts();
     }
 
-
-    #region Part One
-
-    private void PartOne()
+    ///Gets input from file, and puts data in two _left & _right private lists.
+    public void HandleInput(string path)
     {
-        int[] leftArray = QuickSort(_left.ToArray(), 0, _left.ToArray().Length - 1);
-        int[] rightArray = QuickSort(_right.ToArray(), 0, _right.ToArray().Length - 1);
-        Console.WriteLine(GetDifference(leftArray, rightArray));
-    }
-
-
-    ///Gets input from file, and puts data in two different lists, that it returns.
-    private void StuffLists()
-    {
-        var input = File.ReadAllText("../../../Day1/input.txt");
-
+        var input = File.ReadAllText(path);
 
         // Splitting into two Lists.
         foreach (var line in input.Split("\n"))
@@ -53,9 +31,16 @@ public class Day1
         }
     }
 
+    private void RunSorts()
+    {
+        int[] leftArray = QuickSort(_left.ToArray(), 0, _left.ToArray().Length - 1);
+        int[] rightArray = QuickSort(_right.ToArray(), 0, _right.ToArray().Length - 1);
+        Console.WriteLine($"Day 1, Part 1 | Difference: {GetDifference(leftArray, rightArray)}");
+    }
+
 
     /// Sorts the two Lists (Left, right) and returns them.
-    private int[] QuickSort(int[] arr, int low, int high)
+    int[] QuickSort(int[] arr, int low, int high)
     {
         var i = low;
         var j = high;
@@ -107,26 +92,4 @@ public class Day1
 
         return result;
     }
-
-    #endregion
-
-    #region Part Two
-
-    private void PartTwo()
-    {
-        List<int> numbers = [];
-        foreach (var leftLine in _left)
-        {
-            numbers.AddRange(from rightLine in _right where leftLine == rightLine select leftLine);
-        }
-
-        var query = numbers.GroupBy(x => x)
-            .Select(y => new { Number = y.Key, Counter = y.Count()})
-            .ToList();
-
-        var result = query.Sum(number => (number.Number * number.Counter));
-        Console.WriteLine(result);
-    }
-
-    #endregion
 }

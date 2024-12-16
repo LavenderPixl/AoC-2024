@@ -5,7 +5,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Day1.CSharp.Day1 day1 = new(true);
-        Day3.CSharp.Day3 day3 = new(true);
+        Day1.CSharp.Day1Part1 day1Part1 = new();
+        day1Part1.Run();
+        Day1.CSharp.Day1Part2 day1Part2 = new();
+        day1Part2.Run();
+        
+        // Day2.CSharp.Day2Part1 day2Part1 = new(File.ReadAllText("../../../Day2/input.txt").Split("\n"));
     }
 }
