@@ -1,61 +1,76 @@
 namespace AoC.Day2.CSharp;
 
-public class Day2Part1
+public class Day2Part1 : IDay
 {
-    private List<List<int>> workingList { get; set; }
-    public Day2Part1(bool partOne)
+    private List<List<int>> _workingList = [];
+
+    public void Run()
     {
-        if (partOne)
-        {
-            //- Part One. - What do you get if you add up all the results of the multiplications?
-            PartOne();
-        }
-        else
-        {
-            //- Part Two. - What do you get if you add up all of the results of just the enabled multiplications?
-            // PartTwo(); 
-        }
+        HandleInput("../../../Day2/input.txt");
+        //Remove Lists/Levels from Main list, where values increase/decrease too much.
+        _workingList = CheckDifferenceOfValues();
     }
 
-    private void PartOne()
+    public void HandleInput(string path)
     {
-        
-        int safeAmount = 0;
-        int increasing = 0;
-        CleanList();
-    }
+        var input = File.ReadAllText(path).Split("\n");
 
-    private void CheckingList()
-    {
-        
-    }
-    
-    private List<List<int>> CleanList()
-    {
-        // Seperated by Levels.
-        var input = File.ReadAllText("../../../Day2/input.txt").Split("\n");
-        var cleaned = new List<List<int>>();
-        var temp = new List<int>();
-
-        //Report
         foreach (var report in input)
         {
-            //Level
             var levels = report.Split(" ");
-            foreach (var level in levels)
+            var cleaned = levels.Select(int.Parse).ToList();
+
+            _workingList.Add(cleaned);
+        }
+    }
+
+    private List<List<int>> CheckDifferenceOfValues()
+    {
+        List<List<int>> cleaned = [];
+
+        foreach (var li in _workingList)
+        {
+            var clean = false;
+            int? previous = null;
+            var endIndex = li.Count - 1;
+            int increase = 0;
+            foreach (var level in li)
             {
-                temp.Add(int.Parse(level));
+                //If first index/level, skip, to set current as previous.
+                if (previous != null)
+                {
+                    //Checking difference for each int in level.
+                    //If Incorrect levels, break.
+                    if (Math.Abs(level - previous.Value) < 1 | Math.Abs(level - previous.Value) > 3)
+                    {
+                        clean = false;
+                        break;
+                    }
+
+                    if (previous > level)
+                    {
+                        increase++;
+                    }
+                    else
+                    {
+                        increase--;
+                    }
+
+                    clean = true;
+                }
+
+                previous = level;
             }
 
-            cleaned.Add(temp);
-            temp = [];
+            if (!clean || Math.Abs(increase) < endIndex || Math.Abs(increase) > endIndex)
+            {
+                continue;
+            }
+
+            cleaned.Add(li);
         }
 
+        Console.WriteLine($"Day 2, Part 1 | Cleaned: {cleaned.Count}");
         return cleaned;
-        // foreach (var VARIABLE in cleaned)
-        // {
-        // Console.WriteLine(String.Join(";", VARIABLE));
-        // }
-        // Console.WriteLine(temp.);
     }
 }

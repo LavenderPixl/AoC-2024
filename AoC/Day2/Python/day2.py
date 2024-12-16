@@ -16,7 +16,7 @@ def part_one():
         last_index = len(level) - 1
         for i in range(len(level)):
             if i == last_index:
-                continue
+                continue    
 
             # Checking difference of index and one after.
             difference = abs(int(level[i]) - int(level[i + 1]))
