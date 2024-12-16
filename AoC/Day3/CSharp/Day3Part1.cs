@@ -1,14 +1,14 @@
-using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
 
 namespace AoC.Day3.CSharp;
 
+///What do you get if you add up all of the results of the multiplications?
 public class Day3Part1 : IDay
 {
     private string _input = "";
     private const string Pattern = @"mul\(([0-9]*),([0-9]*)\)";
     private readonly List<int> _inputList = [];
-    
+
     public void Run()
     {
         HandleInput("../../../Day3/input.txt");

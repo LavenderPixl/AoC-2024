@@ -1,5 +1,6 @@
 namespace AoC.Day1.CSharp;
 
+///What is their similarity score?
 public class Day1Part2 : IDay
 {
     private readonly List<int> _left = [];
@@ -10,7 +11,7 @@ public class Day1Part2 : IDay
         HandleInput("../../../Day1/input.txt");
         PartTwo();
     }
-    
+
     ///Gets input from file, and puts data in two _left & _right private lists.
     public void HandleInput(string path)
     {
@@ -28,7 +29,7 @@ public class Day1Part2 : IDay
             }
         }
     }
-    
+
     private void PartTwo()
     {
         List<int> numbers = [];

@@ -1,5 +1,6 @@
 namespace AoC.Day2.CSharp;
 
+///How many reports are safe?
 public class Day2Part1 : IDay
 {
     private List<List<int>> _workingList = [];

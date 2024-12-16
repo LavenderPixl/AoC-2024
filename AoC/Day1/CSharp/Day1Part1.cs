@@ -1,7 +1,6 @@
-using System.Collections.ObjectModel;
-
 namespace AoC.Day1.CSharp;
 
+///What is the total distance between the lists?
 public class Day1Part1 : IDay
 {
     private readonly List<int> _left = [];
