@@ -1,6 +1,6 @@
 def run():
     rules, updates = clean_data()
-    print(do_stuff(rules, updates))
+    print(f"Py | Day 5, Part 1 | Correct updates: {do_stuff(rules, updates)}")
 
 
 def clean_data():

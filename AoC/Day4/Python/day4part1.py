@@ -2,9 +2,10 @@
 
 
 
-# def run():
-#     cleaned_list = clean_data()
-#     crawl_data(cleaned_list)
+def run():
+    print("Py | Day 4, Part 1 | Not ready yet.")
+    # cleaned_list = clean_data()
+    # crawl_data(cleaned_list)
 #
 #
 # def clean_data():
